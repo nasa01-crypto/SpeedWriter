@@ -30,6 +30,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		35B664A22D94A2990067D711 /* Exceptions for "SpeedWriter" folder in "SpeedWriterTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				GameViewController.swift,
+			);
+			target = 70D08EAD2D92D98400611785 /* SpeedWriterTests */;
+		};
+		35B664A32D94A2990067D711 /* Exceptions for "SpeedWriter" folder in "SpeedWriterUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				GameViewController.swift,
+			);
+			target = 70D08EB72D92D98400611785 /* SpeedWriterUITests */;
+		};
 		70D08EC02D92D98400611785 /* Exceptions for "SpeedWriter" folder in "SpeedWriter" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +58,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				70D08EC02D92D98400611785 /* Exceptions for "SpeedWriter" folder in "SpeedWriter" target */,
+				35B664A22D94A2990067D711 /* Exceptions for "SpeedWriter" folder in "SpeedWriterTests" target */,
+				35B664A32D94A2990067D711 /* Exceptions for "SpeedWriter" folder in "SpeedWriterUITests" target */,
 			);
 			path = SpeedWriter;
 			sourceTree = "<group>";
