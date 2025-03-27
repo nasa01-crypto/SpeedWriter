@@ -103,6 +103,8 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setBackgroundColor(hex: "#EAE0E4")
+        
         setupUI()
         setupConstraints()
     }

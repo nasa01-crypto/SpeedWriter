@@ -10,7 +10,9 @@ import UIKit
 class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
+        view.setBackgroundColor(hex: "#EAE0E4")
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }

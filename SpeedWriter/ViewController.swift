@@ -20,32 +20,42 @@ class ViewController: UIViewController {
     let difficultySegmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Easy", "Medium", "Hard"])
         control.selectedSegmentIndex = 1
-        
-   
         control.backgroundColor = UIColor(hex: "#ECECEC")
         control.selectedSegmentTintColor = UIColor.darkGray
-
-  
         control.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         control.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
-        
         return control
     }()
 
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "English-Swedish Translation"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        
+        if let font = UIFont(name: "GillSans-Bold", size: 24) {
+            label.font = font
+        } else {
+            label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        }
         label.textAlignment = .center
         return label
     }()
+
+    let speedTranslatorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "SpeedTranslator"
+        if let font = UIFont(name: "GillSans-Bold", size: 24) {
+            label.font = font
+        } else {
+            label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        }
+        label.textAlignment = .center
+        return label
+    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        view.setBackgroundColor(hex: "#EDCCDC") 
-        
+        view.setBackgroundColor(hex: "#eae0e4")
         setupUI()
     }
     
@@ -56,9 +66,11 @@ class ViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         
+
         view.addSubview(playButton)
         view.addSubview(difficultySegmentedControl)
         view.addSubview(titleLabel)
+      
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
