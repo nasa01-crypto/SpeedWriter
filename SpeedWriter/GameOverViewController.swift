@@ -31,6 +31,14 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    private let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     private let gameOverLabel: UILabel = {
         let label = UILabel()
@@ -106,14 +114,15 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Setup
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        
-        view.addSubview(containerView)
-        containerView.addSubview(gameOverLabel)
-        containerView.addSubview(scoreLabel)
-        containerView.addSubview(highScoreLabel)
-        view.addSubview(tableView)
-        view.addSubview(restartButton)
-        view.addSubview(backButton)
+        containerView.addSubview(usernameLabel)
+            containerView.addSubview(gameOverLabel)
+            containerView.addSubview(scoreLabel)
+            containerView.addSubview(highScoreLabel)
+            
+            view.addSubview(containerView)
+            view.addSubview(tableView)
+            view.addSubview(restartButton)
+            view.addSubview(backButton)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -131,12 +140,15 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20),
             containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            containerView.heightAnchor.constraint(equalToConstant: 160),
+            containerView.heightAnchor.constraint(equalToConstant: 180), 
             
             gameOverLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             gameOverLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             
-            scoreLabel.topAnchor.constraint(equalTo: gameOverLabel.bottomAnchor, constant: 8),
+            usernameLabel.topAnchor.constraint(equalTo: gameOverLabel.bottomAnchor, constant: 8),
+            usernameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            
+            scoreLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 8),
             scoreLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             
             highScoreLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 8),
@@ -153,12 +165,21 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
             restartButton.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
-
     private func updateScores() {
         allScores.append(finalScore)
         scoreLabel.text = "Score: \(finalScore)"
         let highScore = uniqueScores.max() ?? 0
         highScoreLabel.text = "Best Score: \(highScore)"
+        
+    
+        if let username = UserDefaults.standard.string(forKey: "currentUsername") {
+            usernameLabel.text = "Player: \(username)"
+            print("Username found: \(username)")
+        } else {
+            usernameLabel.text = "Player: Guest"
+            print("No username found") 
+        }
+        
         tableView.reloadData()
     }
 
@@ -228,6 +249,7 @@ class ScoreTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -279,4 +301,3 @@ class ScoreTableViewCell: UITableViewCell {
         }
     }
 }
-
