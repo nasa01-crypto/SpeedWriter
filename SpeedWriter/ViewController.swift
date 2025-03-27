@@ -1,20 +1,14 @@
-//
-//  ViewController.swift
-//  SpeedWriter
-//
-//  Created by Natalie S on 2025-03-25.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     let playButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
+    
     let usernameTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Enter your username"
@@ -22,13 +16,22 @@ class ViewController: UIViewController {
         tf.autocapitalizationType = .none
         return tf
     }()
+    
     let difficultySegmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Easy", "Medium", "Hard"])
         control.selectedSegmentIndex = 1
-        control.tintColor = .systemBlue
+        
+   
+        control.backgroundColor = UIColor(hex: "#ECECEC")
+        control.selectedSegmentTintColor = UIColor.darkGray
+
+  
+        control.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        control.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        
         return control
     }()
-    
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "English-Swedish Translation"
@@ -39,7 +42,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+       
+        view.setBackgroundColor(hex: "#EDCCDC") 
+        
         setupUI()
     }
     
@@ -49,7 +55,6 @@ class ViewController: UIViewController {
         difficultySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-
         
         view.addSubview(playButton)
         view.addSubview(difficultySegmentedControl)
@@ -59,6 +64,7 @@ class ViewController: UIViewController {
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            
             usernameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
             usernameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
@@ -76,7 +82,6 @@ class ViewController: UIViewController {
         
         playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         
-        
         difficultySegmentedControl.layer.cornerRadius = 10
         difficultySegmentedControl.layer.masksToBounds = true
     }
@@ -88,11 +93,10 @@ class ViewController: UIViewController {
         }
         
         UserDefaults.standard.set(username, forKey: "currentUsername")
-        UserDefaults.standard.synchronize() 
+        UserDefaults.standard.synchronize()
         let gameVC = GameViewController()
         gameVC.difficultyLevel = difficultySegmentedControl.selectedSegmentIndex
         gameVC.modalPresentationStyle = .fullScreen
-        
         
         let transition = CATransition()
         transition.duration = 0.5
@@ -101,6 +105,7 @@ class ViewController: UIViewController {
         
         present(gameVC, animated: false)
     }
+
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
