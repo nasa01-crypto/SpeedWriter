@@ -110,10 +110,10 @@ class GameViewController: UIViewController {
     private func setupDifficulty() {
         switch difficultyLevel {
         case 0: // Lätt
-            timeLeft = 10
+            timeLeft = 20
             difficultyLabel.text = "Difficulty: Easy"
         case 1: // Medel
-            timeLeft = 7
+            timeLeft = 10
             difficultyLabel.text = "Difficulty: Medium"
         case 2: // Svår
             timeLeft = 5
@@ -144,7 +144,7 @@ class GameViewController: UIViewController {
     
     func startTimer() {
         timer?.invalidate()
-        timeLeft = difficultyLevel == 0 ? 10 : (difficultyLevel == 1 ? 7 : 5)
+        timeLeft = difficultyLevel == 0 ? 20 : (difficultyLevel == 1 ? 10 : 5)
         updateTimerLabel()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
