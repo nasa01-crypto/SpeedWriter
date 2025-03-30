@@ -8,6 +8,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Game Mode View Controller-->
+        <scene sceneID="JYE-IR-aua">
+            <objects>
+                <viewController storyboardIdentifier="GameMode" id="ZS7-Vh-bpE" customClass="GameModeViewController" customModule="SpeedWriter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eli-Vo-SBB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbG-Ye-qIf">
+                                <rect key="frame" x="23" y="59" width="62" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="HG6-Jb-2ug"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGW-ZA-87u">
+                                <rect key="frame" x="130" y="227" width="103" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Easy"/>
+                                <connections>
+                                    <action selector="EasyButton:" destination="ZS7-Vh-bpE" eventType="touchUpInside" id="nSZ-ML-v8z"/>
+                                    <segue destination="1gP-ki-6PY" kind="show" identifier="toGameVC" id="ZP7-LM-hVO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPW-vY-cEk">
+                                <rect key="frame" x="151" y="409" width="61" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Hard"/>
+                                <connections>
+                                    <action selector="HardButton:" destination="ZS7-Vh-bpE" eventType="touchUpInside" id="1Xv-Kh-Yqx"/>
+                                    <segue destination="1gP-ki-6PY" kind="show" identifier="toGameVC" id="Q8v-Gt-X5F"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-m6-HkB">
+                                <rect key="frame" x="138" y="329" width="86" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Medium"/>
+                                <connections>
+                                    <action selector="MediumButton:" destination="ZS7-Vh-bpE" eventType="touchUpInside" id="2NQ-9b-TcK"/>
+                                    <segue destination="1gP-ki-6PY" kind="show" identifier="toGameVC" id="w6A-3D-OhI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Emd-hd-hI6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HP-zD-nBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188.54961832061068" y="-943.66197183098598"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="riV-t7-ouw">
             <objects>
@@ -40,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKm-j1-OPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-857.25190839694653" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="-857" y="-100"/>
         </scene>
         <!--Start Game View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -56,7 +112,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="play-4"/>
                                 <connections>
-                                    <segue destination="1gP-ki-6PY" kind="show" id="CXS-9W-f7I"/>
+                                    <segue destination="ZS7-Vh-bpE" kind="presentation" id="vTi-T4-atr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SpeedTranslater" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cy-Lt-2fU">
@@ -98,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="189" y="-100"/>
         </scene>
         <!--Info View Conroller-->
         <scene sceneID="bNg-Rn-J1M">
@@ -132,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dg1-0Y-qVQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924.4274809160305" y="7.746478873239437"/>
+            <point key="canvasLocation" x="1242" y="-100"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="wsk-KE-lnw">
@@ -147,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7S-nm-VSI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-857" y="745"/>
+            <point key="canvasLocation" x="1242" y="637"/>
         </scene>
         <!--Highscore List View Controller-->
         <scene sceneID="LrW-dL-ETz">
@@ -186,11 +242,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtI-3A-yBE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46.564885496183201" y="756.33802816901414"/>
+            <point key="canvasLocation" x="-857" y="638"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Nj-Bd-MSJ"/>
+        <segue reference="HG6-Jb-2ug"/>
+        <segue reference="Q8v-Gt-X5F"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="high-score-3" width="64" height="64"/>
