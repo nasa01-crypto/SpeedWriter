@@ -1,3 +1,10 @@
+//
+//  GameViewController.swift
+//  SpeedWriter
+//
+//  Created by Beles on 2025-03-26.
+//
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -49,6 +56,7 @@ class ViewController: UIViewController {
             label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         }
         label.textAlignment = .center
+        label.alpha = 0 // Start with the label invisible
         return label
     }()
 
@@ -57,6 +65,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.setBackgroundColor(hex: "#eae0e4")
         setupUI()
+        animateSpeedTranslatorLabel() // Call animation here
     }
     
     private func setupUI() {
@@ -65,12 +74,12 @@ class ViewController: UIViewController {
         difficultySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        
+        speedTranslatorLabel.translatesAutoresizingMaskIntoConstraints = false // Make sure this is added to layout
 
         view.addSubview(playButton)
         view.addSubview(difficultySegmentedControl)
         view.addSubview(titleLabel)
-      
+        view.addSubview(speedTranslatorLabel) // Add speedTranslatorLabel to view
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -89,13 +98,26 @@ class ViewController: UIViewController {
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playButton.topAnchor.constraint(equalTo: difficultySegmentedControl.bottomAnchor, constant: 40),
             playButton.widthAnchor.constraint(equalToConstant: 80),
-            playButton.heightAnchor.constraint(equalToConstant: 80)
+            playButton.heightAnchor.constraint(equalToConstant: 80),
+            
+            // Layout for speedTranslatorLabel
+            speedTranslatorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            speedTranslatorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            speedTranslatorLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
         ])
-        
-        playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
-        
-        difficultySegmentedControl.layer.cornerRadius = 10
-        difficultySegmentedControl.layer.masksToBounds = true
+    }
+    
+    private func animateSpeedTranslatorLabel() {
+        // Animate the label going up
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+            self.speedTranslatorLabel.alpha = 1.0 // Fade in
+            self.speedTranslatorLabel.transform = CGAffineTransform(translationX: 0, y: -30) // Move up
+        }) { _ in
+            // After the first animation finishes, animate it back down
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+                self.speedTranslatorLabel.transform = CGAffineTransform(translationX: 0, y: 0) // Return to original position
+            }, completion: nil)
+        }
     }
     
     @objc func playButtonTapped() {

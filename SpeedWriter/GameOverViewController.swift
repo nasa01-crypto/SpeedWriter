@@ -4,7 +4,6 @@
 //
 //  Created by Natalie S on 2025-03-27.
 
-
 import UIKit
 
 class GameOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -103,8 +102,6 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setBackgroundColor(hex: "#EAE0E4")
-        
         setupUI()
         setupConstraints()
     }
