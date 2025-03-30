@@ -140,7 +140,7 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20),
             containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            containerView.heightAnchor.constraint(equalToConstant: 180), 
+            containerView.heightAnchor.constraint(equalToConstant: 180),
             
             gameOverLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
             gameOverLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
@@ -177,7 +177,7 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
             print("Username found: \(username)")
         } else {
             usernameLabel.text = "Player: Guest"
-            print("No username found") 
+            print("No username found")
         }
         
         tableView.reloadData()
