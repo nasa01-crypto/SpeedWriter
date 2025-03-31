@@ -113,7 +113,7 @@ class GameOverViewController: UIViewController, UITableViewDelegate, UITableView
 
     // MARK: - Setup
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.setBackgroundColor(hex: "#EAE0E4")
         containerView.addSubview(usernameLabel)
             containerView.addSubview(gameOverLabel)
             containerView.addSubview(scoreLabel)
