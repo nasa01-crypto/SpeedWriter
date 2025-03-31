@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     let playButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "play"), for: .normal)
@@ -119,15 +119,19 @@ class ViewController: UIViewController {
             }, completion: nil)
         }
     }
-    
-    @objc func playButtonTapped() {
+    private func setName(){
         guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespaces), !username.isEmpty else {
             showAlert(message: "Please enter a username")
             return
         }
-        
         UserDefaults.standard.set(username, forKey: "currentUsername")
         UserDefaults.standard.synchronize()
+        
+    }
+    
+    @objc func playButtonTapped() {
+        
+        setName()
         let gameVC = GameViewController()
         gameVC.difficultyLevel = difficultySegmentedControl.selectedSegmentIndex
         gameVC.modalPresentationStyle = .fullScreen

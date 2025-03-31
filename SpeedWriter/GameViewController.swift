@@ -119,8 +119,8 @@ class GameViewController: UIViewController {
             timeLeft = 5
             difficultyLabel.text = "Difficulty: Hard"
         default:
-            timeLeft = 7
-            difficultyLabel.text = "ifficulty: Medium"
+            timeLeft = 10
+            difficultyLabel.text = "Difficulty: Medium"
         }
     }
     
